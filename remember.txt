@@ -1,0 +1,27 @@
+Khổi tạo dự án
+
+Thêm typing cho node
+npm install @types/node --save-dev
+
+Thêm config cho typescript:
+npx tsc --init --rootDir src --outDir build \
+--esModuleInterop --resolveJsonModule --lib es6 \
+--module commonjs --allowJs true --noImplicitAny true
+
+Cài nodemon và ts-node để watch thay đổi của file ts
+npm install --save-dev ts-node nodemon
+
+Thêm nodemon config để auto watch + reload server
+{
+  "watch": ["src"],
+  "ext": ".ts,.js",
+  "ignore": [],
+  "exec": "ts-node ./src/index.ts"
+}
+
+Thêm script để chạy với dự án
+"start:dev": "nodemon",
+
+Link tham khảo: https://khalilstemmler.com/blogs/typescript/node-starter-project/
+
+Cài express và typing của nó để import vào sử dụng, nếu không thêm typing thì phải dùng require
