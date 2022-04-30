@@ -25,3 +25,7 @@ Thêm script để chạy với dự án
 Link tham khảo: https://khalilstemmler.com/blogs/typescript/node-starter-project/
 
 Cài express và typing của nó để import vào sử dụng, nếu không thêm typing thì phải dùng require
+
+Cài dotenv và chạy dotenv.config() để truy cập vào biến môi trường
+
+Định nghĩa kiểu cho biến môi trường và khai báo typeRoot trong tsconfig
