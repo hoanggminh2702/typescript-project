@@ -1,0 +1,16 @@
+<h1>{{name}}</h1>
+<p>{{title}}</p>
+<p>
+  {{#with person}}
+    {{firstname}}
+    {{uppercase lastname}}
+  {{/with}}
+
+  {{#if showTitle}}
+    <h1>Đây là câu điều kiện title</h1>
+  {{/if}}
+
+  {{#if showNav}}
+  {{> nav}}
+  {{/if}}
+</p>

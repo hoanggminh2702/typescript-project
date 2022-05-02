@@ -1,1 +1,1 @@
-export const getRootDir = process.cwd() + "\\src";
+export const getSourceDir = process.cwd() + "\\src";

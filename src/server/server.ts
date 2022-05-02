@@ -1,8 +1,7 @@
 import dotenv from "dotenv";
 import express from "express";
-import { engine } from "express-handlebars";
-import path from "path";
-import { getRootDir } from "../utilities/util";
+import { create } from "express-handlebars";
+import { getSourceDir } from "../utilities/util";
 
 dotenv.config({
   path: process.cwd() + "\\.env",
@@ -11,23 +10,41 @@ dotenv.config({
 const initApp = () => {
   const app = express();
 
-  const port: number = 8080;
+  const handlebars = create({
+    helpers: {
+      uppercase(keyword: string) {
+        return keyword.toUpperCase();
+      },
+    },
+    defaultLayout: "main",
+    extname: ".hbs",
+    layoutsDir: getSourceDir + "\\views\\layouts",
+    partialsDir: getSourceDir + "\\views\\partials",
+  });
 
-  app.set("view engine", "handlebars");
+  const port = Number(process.env.PORT);
 
-  app.engine("handlebars", engine());
+  app.engine(".hbs", handlebars.engine);
 
-  app.set("views", path.join(getRootDir, "\\views"));
+  app.set("view engine", ".hbs");
+
+  app.set("views", getSourceDir + "\\views");
 
   app.get("/", (req, res) => {
     res.render("index", {
-      title: "My Website",
+      title: req.query.title || "My Website",
       name: "Hoang Minh",
+      person: {
+        firstname: "Hoàng",
+        lastname: "Minh",
+      },
+      showTitle: true,
+      showNav: true,
     });
   });
 
   app.listen(port, () => {
-    console.log("Listening on port", parseInt(process.env.PORT || "3000"));
+    console.log("Listening on port", port);
   });
 };
 
