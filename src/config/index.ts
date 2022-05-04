@@ -1,5 +1,4 @@
 import dotenv from "dotenv";
-import { EnvName } from "../@types/global";
 dotenv.config({
   path: process.cwd() + "\\.env",
 });

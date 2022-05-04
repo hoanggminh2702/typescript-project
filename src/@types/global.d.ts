@@ -1,3 +1,5 @@
+export {};
+
 namespace NodeJS {
   interface ProcessEnv {
     NODE_ENV: string;
@@ -7,4 +9,7 @@ namespace NodeJS {
   }
 }
 
-export type EnvName = keyof NodeJS.ProcessEnv;
+declare global {
+  type EnvName = keyof NodeJS.ProcessEnv;
+  type ProcessEnv = NodeJS.ProcessEnv;
+}
