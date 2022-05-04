@@ -36,7 +36,7 @@ Cơ bản về __dirname:
 Link tham khảo: https://www.digitalocean.com/community/tutorials/nodejs-how-to-use__dirname
 
 Để thêm helpler vào thì create handlebars và truyền vào helpler mong muốn
-Setup view engine cũng thêm vào config object của create
+Setup view engine cũng thêm vào config object của create. Link tham khảo: https://github.com/ericf/express-handlebars/issues/147
 app.get("/", (req, res) => {
     res.render("index", {
       title: "My Website",

@@ -1,51 +1,36 @@
-import dotenv from "dotenv";
 import express from "express";
 import { create } from "express-handlebars";
+import { initDb } from "../common/db";
+import { config } from "../config";
+import { engineConfigOptions } from "../config/EngineConfig";
+import admin from "../routes/admin";
 import { getSourceDir } from "../utilities/util";
 
-dotenv.config({
-  path: process.cwd() + "\\.env",
-});
+const initApp = async () => {
+  try {
+    // init db
+    await initDb();
 
-const initApp = () => {
-  const app = express();
+    const app = express();
 
-  const handlebars = create({
-    helpers: {
-      uppercase(keyword: string) {
-        return keyword.toUpperCase();
-      },
-    },
-    defaultLayout: "main",
-    extname: ".hbs",
-    layoutsDir: getSourceDir + "\\views\\layouts",
-    partialsDir: getSourceDir + "\\views\\partials",
-  });
+    const handlebars = create(engineConfigOptions);
 
-  const port = Number(process.env.PORT);
+    const port = Number(config.port);
 
-  app.engine(".hbs", handlebars.engine);
+    app.engine(".hbs", handlebars.engine);
 
-  app.set("view engine", ".hbs");
+    app.set("view engine", ".hbs");
 
-  app.set("views", getSourceDir + "\\views");
+    app.set("views", getSourceDir + "\\views");
 
-  app.get("/", (req, res) => {
-    res.render("index", {
-      title: req.query.title || "My Website",
-      name: "Hoang Minh",
-      person: {
-        firstname: "Hoàng",
-        lastname: "Minh",
-      },
-      showTitle: true,
-      showNav: true,
+    app.use("/", admin);
+
+    app.listen(port, () => {
+      console.log("Listening on port", port);
     });
-  });
-
-  app.listen(port, () => {
-    console.log("Listening on port", port);
-  });
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 export default initApp;

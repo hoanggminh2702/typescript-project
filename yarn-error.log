@@ -1,5 +1,5 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Users\yc244\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add dotenv
+  C:\Program Files\nodejs\node.exe C:\Users\yc244\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add mongodb
 
 PATH: 
   C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Program Files\nodejs\;C:\Users\yc244\AppData\Local\Microsoft\WindowsApps;C:\Users\yc244\AppData\Local\GitHubDesktop\bin;C:\Users\yc244\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\yc244\AppData\Roaming\npm
@@ -33,6 +33,7 @@ npm manifest:
       "typescript": "^4.6.4"
     },
     "dependencies": {
+      "dotenv": "^16.0.0",
       "express": "^4.18.1",
       "express-handlebars": "^6.0.5",
       "express-hbs": "^2.4.0"
@@ -479,6 +480,11 @@ Lockfile:
     integrity sha512-QM8q3zDe58hqUqjraQOmzZ1LIH9SWQJTlEKCH4kJ2oQvLZk7RbQXvtDM2XEq3fwkV9CCvvH4LA0AV+ogFsBM2Q==
     dependencies:
       is-obj "^2.0.0"
+  
+  dotenv@^16.0.0:
+    version "16.0.0"
+    resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-16.0.0.tgz#c619001253be89ebb638d027b609c75c26e47411"
+    integrity sha512-qD9WU0MPM4SWLPJy/r2Be+2WgQj8plChsyrCNQzW/0WjvcJQiKQJ9mH3ZgB3fxbUUxgc/11ZJ0Fi5KiimWGz2Q==
   
   duplexer3@^0.1.4:
     version "0.1.4"
