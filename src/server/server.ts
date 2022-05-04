@@ -11,11 +11,12 @@ const initApp = async () => {
     // init db
     await initDb();
 
+    // init express and handlebars
     const app = express();
 
     const handlebars = create(engineConfigOptions);
 
-    const port = Number(config.port);
+    const port = config.port;
 
     app.engine(".hbs", handlebars.engine);
 
